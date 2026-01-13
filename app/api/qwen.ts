@@ -2,7 +2,10 @@ const DASHSCOPE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/co
 
 export type QwenMessage = { role: "system" | "user"; content: string };
 
-export async function callQwen(messages: QwenMessage[], model: string) {
+export async function callQwen(
+  messages: readonly QwenMessage[],
+  model: string
+) {
   const apiKey = process.env.DASHSCOPE_API_KEY;
   if (!apiKey) {
     throw new Error("缺少 DASHSCOPE_API_KEY");
